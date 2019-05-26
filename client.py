@@ -8,23 +8,18 @@ import websockets
 import socket
 
 
-def req(ws):
-    await ws.send(json.dumps({
-        "req": "market.{}.kline.{}".format("btcusdt", "1min"),
-        "id": str(uuid.uuid4())}))
-
-    response = await ws.recv()
-    result = gzip.decompress(response).decode('utf-8')
-    print("{}".format(result))
+# def req(ws):
+#     await ws.send(json.dumps({
+#         "req": "market.{}.kline.{}".format("btcusdt", "1min"),
+#         "id": str(uuid.uuid4())}))
+#
+#     response = await ws.recv()
+#     result = gzip.decompress(response).decode('utf-8')
+#     print("{}".format(result))
 
 
 async def hello():
     async with websockets.connect("wss://api.huobi.pro/ws") as ws:
-        # await websocket.send(json.dumps({"ping": time.time()}))
-        #
-        # response = await websocket.recv()
-        # result = gzip.decompress(response).decode('utf-8')
-        # print("{}".format(result))
         await ws.send(json.dumps({
             "req": "market.{}.kline.{}".format("btcusdt", "1min"),
             "id": str(uuid.uuid4())}))
