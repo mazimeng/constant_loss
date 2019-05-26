@@ -23,9 +23,9 @@ async def hello():
     async with websockets.connect("wss://api.huobi.pro/ws") as ws:
         req = {"req": "market.{}.kline.{}".format("btcusdt", "1min"),
                "id": str(uuid.uuid4()),
-               "from": int(datetime.datetime(2018, 1, 1, 8, 1,
+               "from": int(datetime.datetime(2018, 1, 1, 0, 0,
                                              tzinfo=datetime.timezone(datetime.timedelta(hours=8))).timestamp()),
-               "to": int(datetime.datetime(2018, 1, 1, 8, 2,
+               "to": int(datetime.datetime(2018, 1, 1, 0, 2,
                                            tzinfo=datetime.timezone(datetime.timedelta(hours=8))).timestamp())}
 
         await ws.send(json.dumps(req))
