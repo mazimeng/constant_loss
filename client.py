@@ -1,4 +1,5 @@
 import asyncio
+import gzip
 import json
 import time
 
@@ -11,6 +12,7 @@ async def hello():
         await websocket.send(json.dumps({"ping": time.time()}))
 
         response = await websocket.recv()
-        print("{}".format(response.decode()))
+        result = gzip.decompress(response).decode('utf-8')
+        print("{}".format(result))
 
 asyncio.get_event_loop().run_until_complete(hello())
