@@ -36,7 +36,8 @@ async def hello():
                "id": str(uuid.uuid4()),
                "from": int(datetime.datetime(2018, 1, 1, 8, 1,
                                              tzinfo=datetime.timezone(datetime.timedelta(hours=8))).timestamp()),
-               "to": int(datetime.datetime(2018, 1, 1, 8, 2).timestamp())}
+               "to": int(datetime.datetime(2018, 1, 1, 8, 2,
+                                           tzinfo=datetime.timezone(datetime.timedelta(hours=8))).timestamp())}
 
         await ws.send(json.dumps(req))
 
