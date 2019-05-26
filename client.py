@@ -11,6 +11,6 @@ async def hello():
         await websocket.send(json.dumps({"ping": time.time()}))
 
         response = await websocket.recv()
-        print("{}".format(response))
+        print("{}".format(response.decode()))
 
 asyncio.get_event_loop().run_until_complete(hello())
